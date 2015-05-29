@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameElements\boxScript.cs">
     <Files>
       <File FileName="Assets\Scripts\GameElements\itemBeer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player\MovementCube.cs" Line="7" Column="33" />
-      <File FileName="Assets\Scripts\GameElements\boxScript.cs" Line="22" Column="2" />
+      <File FileName="Assets\Scripts\Player\MovementCube.cs" Line="21" Column="1" />
+      <File FileName="Assets\Scripts\GameElements\boxScript.cs" Line="7" Column="30" />
+      <File FileName="Assets\Scripts\Player\MovementCircular.cs" Line="14" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -4,15 +4,12 @@ using System.Collections;
 public class ThrowBall : MonoBehaviour {
 	
 	public float ArrowSpeed = 50.0f;
-	public float X = 0;
-	public float Y = -4;
 
 	private BallMovement m_movementBall;
 	private Transform arrow;
 	private bool initiated = false;
 	private int direction = 1;
 	private Vector3 mEulerAngles = new Vector3(0,0,0);
-
 	void Start () {
 		initiated = false;
 		arrow = transform.FindChild("Arrow");
@@ -36,13 +33,5 @@ public class ThrowBall : MonoBehaviour {
 				direction = 1;
 			arrow.eulerAngles = mEulerAngles;
 		}
-	}
-
-	void Reset() {
-		transform.position = new Vector3 (X, Y, 0);
-		initiated = false;
-		arrow.GetComponent<SpriteRenderer>().enabled = true; 
-		mEulerAngles = new Vector3 (0, 0, 0);
-
 	}
 }

@@ -5,6 +5,7 @@ public class boxScript : MonoBehaviour {
 
 	public int life = 1;
 	public bool hasDrop = false;
+	public bool unbreakable = false;
 
 	public enum dropItems{
 		beer = 0,
@@ -19,7 +20,7 @@ public class boxScript : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.tag == Tags.ball) {
+		if (collision.gameObject.tag == Tags.player) {
 			life--;
 			if(life <= 0) {
 				if(hasDrop){
