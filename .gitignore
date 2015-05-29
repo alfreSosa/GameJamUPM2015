@@ -11,15 +11,15 @@
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
-/*.csproj
-/*.unityproj
-/*.sln
-/*.suo
-/*.user
-/*.userprefs
-/*.pidb
-/*.booproj
-/*.svd
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
 
 # ======================================= #
 # Unity3D Generated File On Crash Reports #
