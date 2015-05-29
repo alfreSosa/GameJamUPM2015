@@ -18,13 +18,15 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		players = GameObject.FindGameObjectsWithTag (Tags.player);
-		/*player.transform.position = new Vector3 (0, heightPlayer, 0);
-		ball.transform.position = new Vector3 (0, heightPlayer + 0.5f, 0);
-		Rigidbody2D rb2D = ball.GetComponent<Rigidbody2D> ();
-		rb2D.velocity = new Vector3(0,0,0);*/
+		int size = players.Length;
+		for (int i = 0; i < size; i++)
+			players [i].GetComponent<ThrowBall> ().Reset ();
+		
+		balls [0].GetComponent<BallMovement> ().Reset ();
 	}
 	
 	void Update () {
+		Debug.Log (lifes);
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		switch (TypeLevel) {
 		case LevelType.Cube:
@@ -54,6 +56,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ResetLevel() {
+		int size = players.Length;
+		for (int i = 0; i < size; i++)
+			players [i].GetComponent<ThrowBall> ().Reset ();
 
+		balls [0].GetComponent<BallMovement> ().Reset ();
 	}
 }
