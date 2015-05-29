@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 421992}
   - 212: {fileID: 21261808}
   m_Layer: 0
-  m_Name: Flecha
+  m_Name: Arrow
   m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,6 +28,7 @@ GameObject:
   - 114: {fileID: 11447790}
   - 50: {fileID: 5097596}
   - 61: {fileID: 6137688}
+  - 114: {fileID: 11410590}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -88,6 +89,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.49000001, y: .300000012}
+--- !u!114 &11410590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab508d3181ab0b44885f8cc254f169d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArrowSpeed: 50
 --- !u!114 &11447790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213beb0a7c262c64c8826f45b502707b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMovement: 50
+  speedMovement: 5
   max_distance: 10
 --- !u!212 &21227962
 SpriteRenderer:

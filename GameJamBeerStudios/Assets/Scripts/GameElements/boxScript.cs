@@ -19,7 +19,7 @@ public class boxScript : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.tag == Tags.player) {
+		if (collision.gameObject.tag == Tags.ball) {
 			life--;
 			if(life <= 0) {
 				if(hasDrop){
