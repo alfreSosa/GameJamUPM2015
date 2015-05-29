@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour {
 	};
 
 	public LevelType TypeLevel = LevelType.Cube;
-	public float heightPlayer = -4;
 	public float lifes = 3;
 	private GameObject[] balls;
 	private GameObject[] players;
