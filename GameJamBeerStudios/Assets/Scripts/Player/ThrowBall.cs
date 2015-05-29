@@ -12,13 +12,15 @@ public class ThrowBall : MonoBehaviour {
 	private bool initiated = false;
 	private int direction = 1;
 	private Vector3 mEulerAngles = new Vector3(0,0,0);
-
+	private GameObject ball;
+	private GameManager gManager;
 	void Start () {
 		initiated = false;
 		arrow = transform.FindChild("Arrow");
 		mEulerAngles = arrow.eulerAngles;
-		GameObject ball = GameObject.FindGameObjectWithTag (Tags.ball);
+		ball = GameObject.FindGameObjectWithTag (Tags.ball);
 		m_movementBall = ball.GetComponent<BallMovement> ();
+		gManager = GameObject.FindGameObjectWithTag (Tags.gameManager).GetComponent<GameManager> ();
 	}
 	
 
@@ -35,6 +37,11 @@ public class ThrowBall : MonoBehaviour {
 			if (mEulerAngles.z <= -45 )
 				direction = 1;
 			arrow.eulerAngles = mEulerAngles;
+			switch (gManager.GetLevelType()) {
+			case GameManager.LevelType.Cube:
+				ball.transform.position = new Vector3(transform.position.x , ball.transform.position.y, 0);
+				break;
+			}
 		}
 	}
 

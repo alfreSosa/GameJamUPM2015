@@ -13,9 +13,9 @@ public class MovementCube : MonoBehaviour {
 
 	void Update () {
 		float direction = 0;
-		if (Input.GetAxis ("HorizontalMovement") > 0)
+		if (Input.GetKey (KeyCode.RightArrow))
 			direction = 1;
-		if (Input.GetAxis ("HorizontalMovement") < 0)
+		if (Input.GetKey (KeyCode.LeftArrow))
 			direction = -1;
 
 		float translation = direction * speedMovement;

@@ -62,4 +62,8 @@ public class GameManager : MonoBehaviour {
 
 		balls [0].GetComponent<BallMovement> ().Reset ();
 	}
+
+	public LevelType GetLevelType() {
+		return TypeLevel;
+	}
 }
