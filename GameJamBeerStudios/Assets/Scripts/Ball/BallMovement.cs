@@ -3,8 +3,7 @@ using System.Collections;
 
 public class BallMovement : MonoBehaviour {
 
-	public float speedMovement = 5.0f;
-	public float desviation = 0.1f;
+	public float speedMovement = 10.0f;
 	private Rigidbody2D rb2D;
 	private bool initMovement = false;
 	void Start () {
@@ -13,20 +12,18 @@ public class BallMovement : MonoBehaviour {
 	
 
 	void FixedUpdate() {
-		if (initMovement)
-			rb2D.AddForce(transform.up * speedMovement);
+
 	}
 
-	public void InitMovement() {
-		initMovement = true;
+	public void InitMovement(Vector3 angle) {
+		if (!initMovement) {
+			transform.eulerAngles = angle;
+			initMovement = true;
+			rb2D.AddForce (new Vector2(transform.up.x,transform.up.y) * speedMovement, ForceMode2D.Impulse);
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
-		GameObject ball = collision.gameObject;
-		if (ball.tag != Tags.item) {
-			Vector3 eulerAngles = ball.transform.eulerAngles;
-			Vector3 newEulerAngles = new Vector3(eulerAngles.x, eulerAngles.y, -eulerAngles.z);
-			ball.transform.eulerAngles = newEulerAngles;
-		}
+
 	}
 }

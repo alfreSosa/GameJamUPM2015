@@ -7,29 +7,27 @@ public class boxScript : MonoBehaviour {
 	public bool hasDrop = false;
 
 	public enum dropItems{
-		beer,
+		beer = 0,
 	};
 	
 	public dropItems drop = dropItems.beer;
 
+	public GameObject[] items;
+
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
-	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.tag == Tags.ball) {
-			life --;
+	void OnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.tag == Tags.player) {
+			life--;
 			if(life <= 0) {
 				if(hasDrop){
-					switch(drop){
-					case dropItems.beer:
-						//Instantiate
-						break;
-					}
+					Debug.Log ("creando");
+					Instantiate (items[(int)drop], transform.position, transform.rotation);
 				}
 
-				Destroy (this);
+				Destroy (gameObject);
 			}
 		}
 
