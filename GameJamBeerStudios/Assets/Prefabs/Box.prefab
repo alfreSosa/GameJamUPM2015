@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 436720}
   - 212: {fileID: 21287606}
   - 50: {fileID: 5023708}
+  - 61: {fileID: 6196418}
   - 114: {fileID: 11487276}
   m_Layer: 0
   m_Name: Box
@@ -40,11 +41,24 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_FixedAngle: 0
-  m_IsKinematic: 0
+  m_FixedAngle: 1
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!61 &6196418
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125494}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: .159999996, y: .159999996}
 --- !u!114 &11487276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -59,6 +73,8 @@ MonoBehaviour:
   life: 1
   hasDrop: 0
   drop: 0
+  items:
+  - {fileID: 112384, guid: 60cb56a8a9a01444d99901b117a95c3c, type: 2}
 --- !u!212 &21287606
 SpriteRenderer:
   m_ObjectHideFlags: 1
