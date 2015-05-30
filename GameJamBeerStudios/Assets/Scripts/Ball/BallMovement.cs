@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class BallMovement : MonoBehaviour {
-
-	public float X = 0;
-	public float Y = -3.5f;
+	
 	public float speedMovement = 10.0f;
 	private Rigidbody2D rb2D;
 	private bool initMovement = false;
@@ -31,7 +29,6 @@ public class BallMovement : MonoBehaviour {
 
 	public void Reset()
 	{
-		transform.position = new Vector3 (X, Y, 0);
 		rb2D.velocity = new Vector3 (0, 0, 0);
 		initMovement = false;
 		transform.eulerAngles = new Vector3 (0, 0, 0);

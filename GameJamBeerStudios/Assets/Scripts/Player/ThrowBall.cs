@@ -5,6 +5,7 @@ public class ThrowBall : MonoBehaviour {
 	
 	public float X = 0;
 	public float Y = -4;
+	public float offsetBall = 0.5f;
 	public float ArrowSpeed = 50.0f;
 
 	private BallMovement m_movementBall;
@@ -17,7 +18,7 @@ public class ThrowBall : MonoBehaviour {
 	void Start () {
 		initiated = false;
 		arrow = transform.FindChild("Arrow");
-		mEulerAngles = arrow.eulerAngles;
+		mEulerAngles = arrow.localEulerAngles;
 		ball = GameObject.FindGameObjectWithTag (Tags.ball);
 		m_movementBall = ball.GetComponent<BallMovement> ();
 		gManager = GameObject.FindGameObjectWithTag (Tags.gameManager).GetComponent<GameManager> ();
@@ -36,12 +37,9 @@ public class ThrowBall : MonoBehaviour {
 				direction = -1;
 			if (mEulerAngles.z <= -45 )
 				direction = 1;
-			arrow.eulerAngles = mEulerAngles;
-			switch (gManager.GetLevelType()) {
-			case GameManager.LevelType.Cube:
-				ball.transform.position = new Vector3(transform.position.x , ball.transform.position.y, 0);
-				break;
-			}
+			arrow.localEulerAngles = mEulerAngles;
+			ball.transform.position = transform.position + transform.up * offsetBall;
+			
 		}
 	}
 
@@ -50,7 +48,9 @@ public class ThrowBall : MonoBehaviour {
 		arrow.GetComponent<SpriteRenderer>().enabled = true;
 		initiated = false;
 		mEulerAngles = new Vector3 (0, 0, 0);
-		arrow.eulerAngles = mEulerAngles;
+		arrow.localEulerAngles = mEulerAngles;
 		direction = 1;
+		ball = GameObject.FindGameObjectWithTag (Tags.ball);
+		ball.transform.position = transform.position + transform.up * offsetBall;
 	}
 }

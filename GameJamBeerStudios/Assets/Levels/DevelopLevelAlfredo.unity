@@ -984,6 +984,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 11447790, guid: ddf861635f4ed4643b06adb4646964e7, type: 2}
+      propertyPath: TypeMovement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447790, guid: ddf861635f4ed4643b06adb4646964e7, type: 2}
+      propertyPath: radious
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ddf861635f4ed4643b06adb4646964e7, type: 2}
   m_IsPrefabParent: 0
