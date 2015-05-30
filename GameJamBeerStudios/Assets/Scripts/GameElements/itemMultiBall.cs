@@ -28,7 +28,12 @@ public class itemMultiBall : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == Tags.player) {
-			if (other.gameObject.transform.GetComponent<ThrowBall>().isInitiated())
+			GameObject[] players = GameObject.FindGameObjectsWithTag(Tags.player);
+			bool ini = true;
+			for (int i = 0; i < players.Length; i++)
+				ini &= players[i].transform.GetComponent<ThrowBall>().isInitiated();
+
+			if (ini)
 				DoFunction();
 			Destroy (gameObject);
 		}

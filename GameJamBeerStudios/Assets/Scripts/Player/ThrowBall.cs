@@ -30,6 +30,8 @@ public class ThrowBall : MonoBehaviour {
 
 	void Update () {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
+		if (!possesedBall)
+			initiated = true;
 
 		if (Input.GetAxis ("Throw") != 0.0f && possesedBall) {
 			if (!isMagnetic)
