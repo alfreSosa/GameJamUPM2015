@@ -37,7 +37,7 @@ public class ThrowBall : MonoBehaviour {
 			if (!isMagnetic)
 				m_movementBall = balls[0].GetComponent<BallMovement> ();
 			else
-				m_movementBall = magneticBall.GetComponent<BallMovement> ();
+				m_movementBall = magneticBall.GetComponent<BallMovement> (); // aqui a veces falla
 
 			arrow.GetComponent<SpriteRenderer>().enabled = false;
 			initiated = true;
