@@ -44,11 +44,13 @@ public class MovementCube : MonoBehaviour {
 		case MovementType.Normal:
 			float translation = direction * speedMovement;
 			translation *= Time.deltaTime;
-			transform.Translate(translation, 0, 0);
-			if (transform.position.x >= max_distance)
-				transform.position = new Vector3 (max_distance, transform.position.y, 0);
-			if (transform.position.x <= -max_distance)
-				transform.position = new Vector3 (-max_distance, transform.position.y, 0);
+			transform.Translate(transform.right * translation);
+			float dot = Vector3.Dot(transform.right, transform.position);
+			float dotUp = Vector3.Dot(transform.up, transform.position);
+			if (dot >= max_distance)
+				transform.position = transform.right * max_distance + transform.up * dotUp;
+			if (dot <= -max_distance)
+				transform.position = transform.right * -max_distance + transform.up * dotUp;
 			break;
 		case MovementType.Circular:
 			float rot = direction * angularSpeed * Time.deltaTime;
