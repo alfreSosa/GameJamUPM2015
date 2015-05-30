@@ -10,8 +10,10 @@ public class boxScript : MonoBehaviour {
 	public GameObject[] items;
 	public int[] percentage;
 
+	private GameManager gM;
 	// Use this for initialization
 	void Start () {
+		gM = GameObject.FindGameObjectWithTag (Tags.gameManager).GetComponent<GameManager> ();
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision) {
@@ -77,6 +79,7 @@ public class boxScript : MonoBehaviour {
 					}
 
 					Destroy (gameObject);
+					gM.DestroyBrick();
 				}
 			}
 		}
