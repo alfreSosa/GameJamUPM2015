@@ -74,13 +74,13 @@ MonoBehaviour:
   hasDrop: 0
   breakable: 1
   items:
+  - {fileID: 116076, guid: cf09b67632e1ad1458a7a703d94ee406, type: 2}
+  - {fileID: 120656, guid: b5e3f2f36045027448418e0042eae651, type: 2}
   - {fileID: 155388, guid: 1376f78be19fdcd458cf42c585a2b15d, type: 2}
-  - {fileID: 155388, guid: 1376f78be19fdcd458cf42c585a2b15d, type: 2}
-  - {fileID: 155388, guid: 1376f78be19fdcd458cf42c585a2b15d, type: 2}
-  - {fileID: 155388, guid: 1376f78be19fdcd458cf42c585a2b15d, type: 2}
-  - {fileID: 155388, guid: 1376f78be19fdcd458cf42c585a2b15d, type: 2}
-  - {fileID: 155388, guid: 1376f78be19fdcd458cf42c585a2b15d, type: 2}
-  - {fileID: 155388, guid: 1376f78be19fdcd458cf42c585a2b15d, type: 2}
+  - {fileID: 112384, guid: 60cb56a8a9a01444d99901b117a95c3c, type: 2}
+  - {fileID: 138402, guid: 7f16c54eb452fc147bf2e95f5c17ab49, type: 2}
+  - {fileID: 155764, guid: e3487b2e9dd420444a7fe0c2478892da, type: 2}
+  - {fileID: 192280, guid: bcc2cd2c3d90cb34a8b6486939887376, type: 2}
   percentage: 0f0000001e000000280000003c000000460000005500000064000000
 --- !u!212 &21287606
 SpriteRenderer:
