@@ -3,16 +3,6 @@ using System.Collections;
 
 public class levelSelection : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	public void SelectLevel(int value) {
 		switch (value) {
 		case 1:

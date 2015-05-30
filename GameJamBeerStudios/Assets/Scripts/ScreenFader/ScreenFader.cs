@@ -61,19 +61,25 @@ public class ScreenFader : MonoBehaviour {
 		m_sceneEnding = true;
 		m_victory = victory;
 	}
-	
+
+	private bool m_change = true;
 	void EndScene (){
-		m_sceneStarting = false;
-		
-		FadeToBlack();
-		
-		if (m_imageChapter.color.a >= 0.95f) {
-			if (m_victory){
-				m_imageVictory.enabled = true;
-				Debug.Log ("victoria");
+		if (m_change) {
+			if (m_imageChapter.color.a >= 0.95f) {
+				if (m_victory) {
+					m_imageChapter.color = Color.clear;
+					m_imageVictory.enabled = true;
+					m_change = false;
+				} else{
+					m_imageChapter.color = Color.clear;
+					m_imageDefeat.enabled = true;
+					m_change = false;
+				}
+			} else {
+				m_sceneStarting = false;
+			
+				FadeToBlack ();
 			}
-			else
-				m_imageDefeat.enabled = true;
 		}
 	}
 }
