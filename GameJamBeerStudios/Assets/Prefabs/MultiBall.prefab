@@ -54,9 +54,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55910e6ce0b7e647bcb20ab9fbc0f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  BallsNumber: 3
-  BallsSpeed: 5
+  speed: 6
+  BallsNumber: 5
+  BallsSpeed: 8
   AngleSeparation: 45
   ball: {fileID: 104450, guid: 02cad12a2559d494f9f36c7f97b9053d, type: 2}
 --- !u!212 &21203648

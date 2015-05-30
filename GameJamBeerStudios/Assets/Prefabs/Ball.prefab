@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a99b1e917b65144bd21fbf711b74d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMovement: 5
+  speedMovement: 8
   angleDesviation: 10
   timeForEvolution: 45
   speedEvolution: 3
