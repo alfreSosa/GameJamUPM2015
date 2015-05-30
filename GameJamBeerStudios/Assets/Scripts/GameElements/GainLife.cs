@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChangeSpeedBalls : MonoBehaviour {
-	public float percentage = 0.1f;
-
+public class GainLife : MonoBehaviour {
 	public float speed = 1.0f;
 	
 	private Vector3 vec0;
@@ -35,12 +33,7 @@ public class ChangeSpeedBalls : MonoBehaviour {
 	}
 	
 	void DoFunction() {
-		GameObject[] balls = GameObject.FindGameObjectsWithTag (Tags.ball);
-		int size = balls.Length;
-		for (int i = 0; i < size; i++) {
-			float sp = balls [i].GetComponent<BallMovement> ().GetSpeed();
-			sp *= (1 + percentage);
-			balls [i].GetComponent<BallMovement> ().SetSpeed(sp);
-		}
+		GameObject gameManager = GameObject.FindGameObjectWithTag (Tags.gameManager);
+		gameManager.GetComponent<GameManager> ().GainLife();
 	}
 }

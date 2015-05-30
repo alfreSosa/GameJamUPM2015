@@ -56,4 +56,12 @@ public class BallMovement : MonoBehaviour {
 				other.gameObject.GetComponent<ThrowBall>().ResetMagnetic(transform.gameObject);
 		}
 	}
+
+	public void SetSpeed(float speed) {
+		speedMovement = speed;
+	}
+	
+	public float GetSpeed() {
+		return speedMovement;
+	}
 }

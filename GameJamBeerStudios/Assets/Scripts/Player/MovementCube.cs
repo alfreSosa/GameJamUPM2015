@@ -77,12 +77,4 @@ public class MovementCube : MonoBehaviour {
 		isDrunk = true;
 	}
 
-	public void SetSpeed(float speed) {
-		speedMovement = speed;
-	}
-
-	public float GetSpeed() {
-		return speedMovement;
-	}
-
 }
