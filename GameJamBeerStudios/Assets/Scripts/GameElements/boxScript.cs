@@ -23,22 +23,57 @@ public class boxScript : MonoBehaviour {
 					life--;
 				if (life <= 0) {
 					if (hasDrop) {
+						bool success = false;
+						GameObject gameManager = GameObject.FindGameObjectWithTag (Tags.gameManager);
+
+						while(!success){
 						float valueR = Random.Range(0, 100);
 
-						if(valueR < percentage[0])
-							Instantiate (items [0], transform.position, transform.rotation);
-						else if(valueR < percentage[1])
-							Instantiate (items [1], transform.position, transform.rotation);
-						else if(valueR < percentage[2])
-							Instantiate (items [2], transform.position, transform.rotation);
-						else if(valueR < percentage[3])
-							Instantiate (items [3], transform.position, transform.rotation);
-						else if(valueR < percentage[4])
-							Instantiate (items [4], transform.position, transform.rotation);
-						else if(valueR < percentage[5])
-							Instantiate (items [5], transform.position, transform.rotation);
-						else if(valueR < percentage[6])
-							Instantiate (items [6], transform.position, transform.rotation);
+						if(valueR < percentage[0]){  //multiball
+							GameObject[] balls = GameObject.FindGameObjectsWithTag (Tags.ball);
+							int size = balls.Length;
+							if(size == 1){
+								success = true;
+								Instantiate (items [0], transform.position, transform.rotation);
+							}
+						}
+						else if(valueR < percentage[1])  //magnetic
+							if(!gameManager.GetComponent<GameManager> ().GetMagneticItem()){
+								gameManager.GetComponent<GameManager> ().SetMagneticItem();
+								success = true;
+								Instantiate (items [1], transform.position, transform.rotation);
+							}
+						else if(valueR < percentage[2])  //fireball
+							if(!gameManager.GetComponent<GameManager> ().GetFireBallItem()){
+								gameManager.GetComponent<GameManager> ().SetFireBallItem();
+								success = true;
+								Instantiate (items [2], transform.position, transform.rotation);
+							}
+						else if(valueR < percentage[3])  //beer
+							if(!gameManager.GetComponent<GameManager> ().GetBeerItem()){
+								gameManager.GetComponent<GameManager> ().SetBeerItem();
+								success = true;
+								Instantiate (items [3], transform.position, transform.rotation);
+							}
+						else if(valueR < percentage[4])  //life
+							if(!gameManager.GetComponent<GameManager> ().GetLifeItem()){
+								gameManager.GetComponent<GameManager> ().SetLifeItem();
+								success = true;
+								Instantiate (items [4], transform.position, transform.rotation);
+							}
+						else if(valueR < percentage[5])  //lostSpeedBall
+							if(!gameManager.GetComponent<GameManager> ().GetLostSpeedItem()){
+								gameManager.GetComponent<GameManager> ().SetLostSpeedItem();
+								success = true;
+								Instantiate (items [5], transform.position, transform.rotation);
+							}
+						else if(valueR < percentage[6])  //gainSpeedBall
+							if(!gameManager.GetComponent<GameManager> ().GetGainSpeedItem()){
+								gameManager.GetComponent<GameManager> ().SetGainSpeedItem();
+								success = true;
+								Instantiate (items [6], transform.position, transform.rotation);
+							}
+						}
 					}
 
 					Destroy (gameObject);

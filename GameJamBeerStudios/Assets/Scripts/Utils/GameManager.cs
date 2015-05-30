@@ -14,6 +14,13 @@ public class GameManager : MonoBehaviour {
 	private GameObject[] balls;
 	private GameObject[] players;
 
+	private bool m_magnetic = false;
+	private bool m_fireBall = false;
+	private bool m_beer = false;
+	private bool m_life = false;
+	private bool m_lostSpeed = false;
+	private bool m_gainSpeed = false;
+
 	void Start () {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		players = GameObject.FindGameObjectsWithTag (Tags.player);
@@ -32,6 +39,7 @@ public class GameManager : MonoBehaviour {
 				if (balls[0].transform.position.y < players[0].transform.position.y) {
 					LoseLife ();
 					ResetLevel();
+					ResetItem();
 					int size = players.Length;
 					for (int i = 0; i < size; i++)
 						players [i].GetComponent<ThrowBall> ().SetMagnetic(false);
@@ -47,6 +55,11 @@ public class GameManager : MonoBehaviour {
 	
 	public void LoseLife() {
 		lifes--;
+		changeSizeplayer ();
+	}
+
+	public void GainLife() {
+		lifes++;
 		changeSizeplayer ();
 	}
 
@@ -92,5 +105,62 @@ public class GameManager : MonoBehaviour {
 
 	public LevelType GetLevelType() {
 		return TypeLevel;
+	}
+
+	void ResetItem(){
+		m_magnetic = false;
+		m_fireBall = false;
+		m_beer = false;
+		m_life = false;
+		m_gainSpeed = false;
+		m_lostSpeed = false;
+	}
+
+	public void SetMagneticItem(){
+		m_magnetic = true;
+	}
+
+	public bool GetMagneticItem(){
+		return m_magnetic;
+	}
+
+	public void SetFireBallItem(){
+		m_fireBall = true;
+	}
+	
+	public bool GetFireBallItem(){
+		return m_fireBall;
+	}
+
+	public void SetBeerItem(){
+		m_beer = true;
+	}
+	
+	public bool GetBeerItem(){
+		return m_beer;
+	}
+
+	public void SetLifeItem(){
+		m_life = true;
+	}
+	
+	public bool GetLifeItem(){
+		return m_life;
+	}
+
+	public void SetLostSpeedItem(){
+		m_lostSpeed = true;
+	}
+	
+	public bool GetLostSpeedItem(){
+		return m_lostSpeed;
+	}
+
+	public void SetGainSpeedItem(){
+		m_gainSpeed = true;
+	}
+	
+	public bool GetGainSpeedItem(){
+		return m_gainSpeed;
 	}
 }

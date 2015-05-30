@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class itemMagnetic : MonoBehaviour {
-
-	public float speed = 1;
+public class GainLife : MonoBehaviour {
+	public float speed = 1.0f;
 	
 	private Vector3 vec0;
 	private Vector3 vec1;
@@ -17,7 +16,6 @@ public class itemMagnetic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position += -transform.up * speed * Time.deltaTime;
-		
 		
 		DestroyBoundaries ();
 	}
@@ -35,9 +33,7 @@ public class itemMagnetic : MonoBehaviour {
 	}
 	
 	void DoFunction() {
-		GameObject[] players = GameObject.FindGameObjectsWithTag (Tags.player);
-		int size = players.Length;
-		for (int i = 0; i < size; i++)
-			players [i].GetComponent<ThrowBall> ().SetMagnetic(true);
+		GameObject gameManager = GameObject.FindGameObjectWithTag (Tags.gameManager);
+		gameManager.GetComponent<GameManager> ().GainLife();
 	}
 }

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class itemMagnetic : MonoBehaviour {
+public class ChangeSpeedBalls : MonoBehaviour {
+	public float percentage = 0.1f;
 
-	public float speed = 1;
+	public float speed = 1.0f;
 	
 	private Vector3 vec0;
 	private Vector3 vec1;
@@ -17,7 +18,6 @@ public class itemMagnetic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position += -transform.up * speed * Time.deltaTime;
-		
 		
 		DestroyBoundaries ();
 	}
@@ -35,9 +35,12 @@ public class itemMagnetic : MonoBehaviour {
 	}
 	
 	void DoFunction() {
-		GameObject[] players = GameObject.FindGameObjectsWithTag (Tags.player);
-		int size = players.Length;
-		for (int i = 0; i < size; i++)
-			players [i].GetComponent<ThrowBall> ().SetMagnetic(true);
+		GameObject[] balls = GameObject.FindGameObjectsWithTag (Tags.ball);
+		int size = balls.Length;
+		for (int i = 0; i < size; i++) {
+			float sp = balls [i].GetComponent<BallMovement> ().GetSpeed();
+			sp *= (1 + percentage);
+			balls [i].GetComponent<BallMovement> ().SetSpeed(sp);
+		}
 	}
 }

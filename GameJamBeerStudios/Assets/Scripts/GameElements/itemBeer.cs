@@ -12,8 +12,6 @@ public class itemBeer : MonoBehaviour {
 	void Start () {
 		vec0 = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));
 		vec1 = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
-		//Debug.Log ("vec0" + vec0.ToString());
-		//Debug.Log ("vec1" + vec1.ToString());
 	}
 	
 	// Update is called once per frame
