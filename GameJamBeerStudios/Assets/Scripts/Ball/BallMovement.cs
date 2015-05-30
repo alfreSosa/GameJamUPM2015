@@ -70,7 +70,8 @@ public class BallMovement : MonoBehaviour {
 			rb2D.AddForce (new Vector2(transform.up.x,transform.up.y) * speedMovement, ForceMode2D.Impulse);
 		}
 		if (other.gameObject.tag == Tags.player) {
-			if (other.gameObject.GetComponent<ThrowBall>().GetMagnetic())
+			ThrowBall thow = other.gameObject.GetComponent<ThrowBall>();
+			if (thow.GetMagnetic() && !thow.GetPossesed())
 				other.gameObject.GetComponent<ThrowBall>().ResetMagnetic(transform.gameObject);
 		}
 	}
