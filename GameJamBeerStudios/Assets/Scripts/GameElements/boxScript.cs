@@ -17,7 +17,10 @@ public class boxScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (breakable) {
 			if (collision.gameObject.tag == Tags.ball) {
-				life--;
+				if(collision.gameObject.GetComponent<BallMovement> ().GetFire ())
+					life = 0;
+				else
+					life--;
 				if (life <= 0) {
 					if (hasDrop) {
 						float valueR = Random.Range(0, 100);
