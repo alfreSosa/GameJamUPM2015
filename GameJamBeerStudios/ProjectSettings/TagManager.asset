@@ -10,6 +10,10 @@ TagManager:
   - GameManager
   - Arrow
   - Enemy
+  - Fade
+  - Victory
+  - Defeat
+  - Fader
   layers:
   - Default
   - TransparentFX

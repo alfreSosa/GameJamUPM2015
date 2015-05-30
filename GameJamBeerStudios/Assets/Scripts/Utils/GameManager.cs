@@ -235,24 +235,23 @@ public class GameManager : MonoBehaviour {
 		numberBricks--;
 	}
 
-	public void RemoveBall(GameObject b)
-	{
+	public void RemoveBall(GameObject b) {
 		if (b.tag == Tags.ball) {
 			if (balls.Length > 1)
 				Destroy(b);
 			else
 				m_triangleGameOver = true;
 		}
-		
 	}
 
 	public void Victory() {
 		GameObject fade = GameObject.FindGameObjectWithTag (Tags.fade);
-		fade.GetComponent<ScreenFader>().End_Game (true);
+		fade.GetComponent<ScreenFader> ().End_Game (true);
 	}
 
 	void Defeat() {
 		GameObject fade = GameObject.FindGameObjectWithTag (Tags.fade);
-		fade.GetComponent<ScreenFader>().End_Game (false);
+		fade.GetComponent<ScreenFader> ().End_Game (false);
+
 	}
 }
