@@ -15,6 +15,7 @@ public class ThrowBall : MonoBehaviour {
 	private Vector3 mEulerAngles = new Vector3(0,0,0);
 	private GameObject ball;
 	private GameManager gManager;
+
 	void Start () {
 		initiated = false;
 		arrow = transform.FindChild("Arrow");

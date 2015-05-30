@@ -15,20 +15,31 @@ public class MovementCube : MonoBehaviour {
 
 	public float radious = 5.0f;
 	public float angularSpeed = 50.0f;
-	
-	private float angle = 0;
 
+	public float DrunkDuration = 5.0f;
+
+	private float angle = 0;
+	private float drunkDir = 1;
+	private float drunkElapsed = 0.0f;
+	private bool isDrunk = false;
 	void Start () {
 		GameObject ball = GameObject.FindGameObjectWithTag (Tags.ball);
 		angle = transform.rotation.eulerAngles.z;
 	}
 
 	void Update () {
+		if (isDrunk) {
+			drunkElapsed += Time.deltaTime;
+			if (drunkElapsed >= DrunkDuration) {
+				drunkDir = 1;
+				isDrunk = false;
+			}
+		}
 		float direction = 0;
 		if (Input.GetKey (KeyCode.RightArrow))
-			direction = 1;
+			direction = 1 * drunkDir;
 		if (Input.GetKey (KeyCode.LeftArrow))
-			direction = -1;
+			direction = -1 * drunkDir;
 		switch (TypeMovement) {
 		case MovementType.Normal:
 			float translation = direction * speedMovement;
@@ -56,5 +67,11 @@ public class MovementCube : MonoBehaviour {
 		}
 
 
+	}
+
+	public void GetDrunk() {
+		drunkDir = -1;
+		drunkElapsed = 0.0f;
+		isDrunk = true;
 	}
 }

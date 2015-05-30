@@ -12,8 +12,8 @@ public class itemBeer : MonoBehaviour {
 	void Start () {
 		vec0 = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));
 		vec1 = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
-		Debug.Log ("vec0" + vec0.ToString());
-		Debug.Log ("vec1" + vec1.ToString());
+		//Debug.Log ("vec0" + vec0.ToString());
+		//Debug.Log ("vec1" + vec1.ToString());
 	}
 	
 	// Update is called once per frame
@@ -24,8 +24,8 @@ public class itemBeer : MonoBehaviour {
 		DestroyBoundaries ();
 	}
 
-	void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.tag == Tags.player) {
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == Tags.player) {
 			DoFunction();
 			Destroy (gameObject);
 		}
@@ -37,6 +37,9 @@ public class itemBeer : MonoBehaviour {
 	}
 
 	void DoFunction() {
-		//llamar a una funcion del player
+		GameObject[] players = GameObject.FindGameObjectsWithTag (Tags.player);
+		int size = players.Length;
+		for (int i = 0; i < size; i++)
+			players [i].GetComponent<MovementCube> ().GetDrunk ();
 	}
 }
