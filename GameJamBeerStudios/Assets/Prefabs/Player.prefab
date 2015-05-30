@@ -28,7 +28,7 @@ GameObject:
   - 114: {fileID: 11447790}
   - 50: {fileID: 5097596}
   - 114: {fileID: 11424508}
-  - 60: {fileID: 6073654}
+  - 60: {fileID: 6088502}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.5, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 421992}
@@ -76,7 +76,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!60 &6073654
+--- !u!60 &6088502
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,14 +89,37 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -.685000002, y: .150000006}
-      - {x: -.745000005, y: .0900000036}
-      - {x: -.745000005, y: -.0900000036}
-      - {x: -.685000002, y: -.150000006}
-      - {x: .665000021, y: -.150000006}
-      - {x: .735000014, y: -.0799999982}
-      - {x: .735000014, y: .0900000036}
-      - {x: .685000002, y: .150000006}
+    - - {x: 2.1500001, y: .075000003}
+      - {x: 2.07999992, y: .185000002}
+      - {x: 1.88, y: .354999989}
+      - {x: 1.71000004, y: .395000011}
+      - {x: 1.64999998, y: .395000011}
+      - {x: 1.60000002, y: .38499999}
+      - {x: 1.41999996, y: .395000011}
+      - {x: 1.11000001, y: .395000011}
+      - {x: 1.10000002, y: .36500001}
+      - {x: .810000002, y: .395000011}
+      - {x: .389999986, y: .395000011}
+      - {x: .349999994, y: .38499999}
+      - {x: -.370000005, y: .38499999}
+      - {x: -.419999987, y: .395000011}
+      - {x: -.560000002, y: .395000011}
+      - {x: -.569999993, y: .38499999}
+      - {x: -1.07000005, y: .395000011}
+      - {x: -1.84000003, y: .395000011}
+      - {x: -2.11999989, y: .174999997}
+      - {x: -2.1500001, y: .125}
+      - {x: -2.1500001, y: -.0949999988}
+      - {x: -2.1400001, y: -.155000001}
+      - {x: -1.86000001, y: -.36500001}
+      - {x: -1.77999997, y: -.395000011}
+      - {x: -1.14999998, y: -.395000011}
+      - {x: -1.09000003, y: -.354999989}
+      - {x: 1.07000005, y: -.354999989}
+      - {x: 1.11000001, y: -.395000011}
+      - {x: 1.86000001, y: -.395000011}
+      - {x: 2.05999994, y: -.245000005}
+      - {x: 2.1500001, y: -.0949999988}
 --- !u!114 &11424508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,8 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   X: 0
-  Y: -4.5
+  Y: -10
+  offsetBall: .699999988
   ArrowSpeed: 50
+  possesedBall: 0
 --- !u!114 &11447790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,8 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213beb0a7c262c64c8826f45b502707b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMovement: 5
-  max_distance: 5.5
+  TypeMovement: 0
+  speedMovement: 10
+  max_distance: 9.5
+  radious: 5
+  angularSpeed: 50
+  DrunkDuration: 5
 --- !u!212 &21227962
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -148,7 +177,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0f2e3e639adf3054faa0835fc7cdced3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2fa84127476b3ec4b9e63e2d13c81645, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21261808
 SpriteRenderer:
