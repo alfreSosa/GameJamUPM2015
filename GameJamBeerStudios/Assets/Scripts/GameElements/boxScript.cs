@@ -9,11 +9,10 @@ public class boxScript : MonoBehaviour {
 
 	public GameObject[] items;
 	public int[] percentage;
-
-	private GameManager gM;
+	
 	// Use this for initialization
 	void Start () {
-		gM = GameObject.FindGameObjectWithTag (Tags.gameManager).GetComponent<GameManager> ();
+
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision) {
@@ -24,9 +23,10 @@ public class boxScript : MonoBehaviour {
 				else
 					life--;
 				if (life <= 0) {
+						GameObject gameManager = GameObject.FindGameObjectWithTag (Tags.gameManager);
+					
 					if (hasDrop) {
 						bool success = false;
-						GameObject gameManager = GameObject.FindGameObjectWithTag (Tags.gameManager);
 
 						while(!success){
 						float valueR = Random.Range(0, 100);
@@ -76,10 +76,10 @@ public class boxScript : MonoBehaviour {
 								Instantiate (items [6], transform.position, transform.rotation);
 							}
 						}
+						
 					}
-
+					gameManager.GetComponent<GameManager> ().DestroyBrick();
 					Destroy (gameObject);
-					gM.DestroyBrick();
 				}
 			}
 		}

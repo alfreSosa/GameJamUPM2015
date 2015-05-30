@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour {
 	{
 		Cube,
 		Circle,
-		Triangle
+		Triangle,
+		Boss
 	};
 
 	public LevelType TypeLevel = LevelType.Cube;
@@ -23,26 +24,22 @@ public class GameManager : MonoBehaviour {
 	private bool m_gainSpeed = false;
 	private bool m_triangleGameOver = false;
 	private bool m_victory = false;
+	private GameObject[] boxes;
+	private int numberBricks = 1;
 
-	private int numberBricks = 0;
-
-	void Start () {
+	void Start() {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		players = GameObject.FindGameObjectsWithTag (Tags.player);
-		int size = players.Length;
+		/*int size = players.Length;
 		for (int i = 0; i < size; i++)
 			players [i].GetComponent<ThrowBall> ().Reset ();
 		
-		balls [0].GetComponent<BallMovement> ().Reset ();
-
-		GameObject[] box = GameObject.FindGameObjectsWithTag (Tags.box);
-		int sizeBoxes = box.Length;
-		for (int j = 0; j < sizeBoxes; j++)
-			if (box [j].GetComponent<boxScript> ().breakable)
-				numberBricks++;
+		balls [0].GetComponent<BallMovement> ().Reset ();*/
 	}
 	
 	void Update () {
+		//Debug.Log (numberBricks);
+
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		switch (TypeLevel) {
 		case LevelType.Cube:
@@ -57,8 +54,7 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 			if (numberBricks == 0) {
-				m_victory = true;
-				Debug.Log("Victory");
+				Victory();
 			}
 			break;
 		case LevelType.Circle:
@@ -74,7 +70,7 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 			if (numberBricks == 0)
-				m_victory = true;
+				Victory();
 			break;
 		case LevelType.Triangle:
 			if (m_triangleGameOver) {
@@ -87,7 +83,19 @@ public class GameManager : MonoBehaviour {
 					players [i].GetComponent<ThrowBall> ().SetMagnetic(false);
 			}
 			if (numberBricks == 0)
-				m_victory = true;
+				Victory();
+			break;
+		case LevelType.Boss:
+			if (balls.Length == 1){
+				if (balls[0].transform.position.y < players[0].transform.position.y) {
+					LoseLife ();
+					ResetLevel();
+					ResetItem();
+					int size = players.Length;
+					for (int i = 0; i < size; i++)
+						players [i].GetComponent<ThrowBall> ().SetMagnetic(false);
+				}
+			}
 			break;
 		}
 	}
@@ -204,8 +212,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void DestroyBrick() {
+		numberBricks = 0;
+		boxes = GameObject.FindGameObjectsWithTag (Tags.box);
+		int sizeBoxes = boxes.Length;
+		for (int j = 0; j < sizeBoxes; j++) {
+			boxScript s = boxes [j].GetComponent<boxScript>();
+			if (s)
+				if (s.breakable)
+					numberBricks++;
+		}
 		numberBricks--;
 	}
+
 	public void RemoveBall(GameObject b)
 	{
 		if (b.tag == Tags.ball) {
@@ -215,5 +233,10 @@ public class GameManager : MonoBehaviour {
 				m_triangleGameOver = true;
 		}
 		
+	}
+
+	public void Victory() {
+		m_victory = true;
+		Debug.Log("Victory");
 	}
 }

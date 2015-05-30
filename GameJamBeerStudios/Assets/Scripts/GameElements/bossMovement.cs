@@ -36,7 +36,9 @@ public class bossMovement : MonoBehaviour {
 			if(life <= secondPhaseLife)
 				m_secondPhase = true;
 			if (life <= 0) {
-				
+				GameObject gameManager = GameObject.FindGameObjectWithTag(Tags.gameManager);
+				GameManager manager = gameManager.GetComponent<GameManager>();
+				manager.Victory();
 				Destroy (gameObject);
 			}
 		}
