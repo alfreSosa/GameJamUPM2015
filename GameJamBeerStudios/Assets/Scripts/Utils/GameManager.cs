@@ -50,6 +50,11 @@ public class GameManager : MonoBehaviour {
 		changeSizeplayer ();
 	}
 
+	public void GetLife() {
+		lifes++;
+		changeSizeplayer ();
+	}
+
 	public void AddLife() {
 		if (lifes < 4) {
 			lifes++;
