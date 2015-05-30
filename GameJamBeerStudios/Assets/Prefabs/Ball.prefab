@@ -72,6 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMovement: 5
   angleDesviation: 10
+  timeForEvolution: 45
+  speedEvolution: 3
   fireTime: 5
 --- !u!212 &21220430
 SpriteRenderer:

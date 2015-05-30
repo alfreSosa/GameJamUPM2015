@@ -5,6 +5,10 @@ public class BallMovement : MonoBehaviour {
 	
 	public float speedMovement = 10.0f;
 	public float angleDesviation = 10.0f;
+	public float timeForEvolution = 45.0f;
+	public float speedEvolution = 3.0f;
+
+	private float m_elapsedEvolution = 0.0f;
 	private Rigidbody2D rb2D;
 	private bool initMovement = false;
 	private bool m_fire = false;
@@ -16,6 +20,13 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	void Update() {
+		if (initMovement){
+			m_elapsedEvolution += Time.deltaTime;
+			if (m_elapsedEvolution >= timeForEvolution) {
+				m_elapsedEvolution = 0;
+				speedMovement += speedEvolution;
+			}
+		}
 		if (m_fire) {
 			m_currentFireTime -= Time.deltaTime;
 			if(m_currentFireTime <= 0)

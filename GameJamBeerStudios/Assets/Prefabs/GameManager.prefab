@@ -40,8 +40,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeLevel: 0
-  heightPlayer: -4
   lifes: 3
+  RadiousLevel: 5
+  imgPlayer:
+  - {fileID: 21300000, guid: 48cbfe550a9abc34599c4dc27e234c68, type: 3}
+  - {fileID: 21300000, guid: 6dd9e1be44b078740a5cb0283689b046, type: 3}
+  - {fileID: 21300000, guid: 2fa84127476b3ec4b9e63e2d13c81645, type: 3}
+  - {fileID: 21300000, guid: 1c6640703648b84468f77332e8c027eb, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

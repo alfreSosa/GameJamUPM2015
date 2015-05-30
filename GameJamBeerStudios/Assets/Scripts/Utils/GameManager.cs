@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
 	public LevelType TypeLevel = LevelType.Cube;
 	public int lifes = 3;
 	public float RadiousLevel = 5.0f;
+
+	public Sprite[] imgPlayer;
 	private GameObject[] balls;
 	private GameObject[] players;
 
@@ -122,20 +124,34 @@ public class GameManager : MonoBehaviour {
 			Defeat();
 			break;
 		case 1:
-			for (int i = 0; i < size; i++)
-				players [i].transform.localScale = new Vector3(0.33f, 1.0f, 1.0f);
+			for (int i = 0; i < size; i++){
+				players[i].transform.GetComponent<SpriteRenderer>().sprite = imgPlayer[0];
+				Destroy(players[i].GetComponent<PolygonCollider2D>());
+				players[i].AddComponent<PolygonCollider2D>();
+			}
+				//players [i].transform.localScale = new Vector3(0.33f, 1.0f, 1.0f);
 			break;
 		case 2:
-			for (int i = 0; i < size; i++)
-				players [i].transform.localScale = new Vector3(0.66f, 1.0f, 1.0f);
+			for (int i = 0; i < size; i++){
+				players[i].transform.GetComponent<SpriteRenderer>().sprite = imgPlayer[1];
+				Destroy(players[i].GetComponent<PolygonCollider2D>());
+				players[i].AddComponent<PolygonCollider2D>();
+			}
+				//players [i].transform.localScale = new Vector3(0.66f, 1.0f, 1.0f);
 			break;
 		case 3:
-			for (int i = 0; i < size; i++)
-				players [i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+			for (int i = 0; i < size; i++){
+				players[i].transform.GetComponent<SpriteRenderer>().sprite = imgPlayer[2];
+				Destroy(players[i].GetComponent<PolygonCollider2D>());
+				players[i].AddComponent<PolygonCollider2D>();
+			}
 			break;
 		case 4:
-			for (int i = 0; i < size; i++)
-				players [i].transform.localScale = new Vector3(1.33f, 1.0f, 1.0f);
+			for (int i = 0; i < size; i++){
+				players[i].transform.GetComponent<SpriteRenderer>().sprite = imgPlayer[3];
+				Destroy(players[i].GetComponent<PolygonCollider2D>());
+				players[i].AddComponent<PolygonCollider2D>();
+			}
 			break;
 		}
 	}
