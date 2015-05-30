@@ -7,7 +7,6 @@ public class EndLevel : MonoBehaviour {
 
 	public void GoToMenu(){
 		Application.LoadLevel ("SelectGames");
-		Debug.Log ("go to menu");
 	}
 
 	public void GoToNextLevel(){

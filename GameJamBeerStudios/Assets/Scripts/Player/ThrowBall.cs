@@ -14,17 +14,17 @@ public class ThrowBall : MonoBehaviour {
 	private int direction = 1;
 	private Vector3 mEulerAngles = new Vector3(0,0,0);
 	private GameObject[] balls;
-	private GameManager gManager;
 	private bool isMagnetic = false;
 	private GameObject magneticBall = null;
 
 	public bool possesedBall = false;
 
+	private bool m_lock = false;
+
 	void Start () {
 		initiated = false;
 		arrow = transform.FindChild("Arrow");
 		mEulerAngles = arrow.localEulerAngles;
-		gManager = GameObject.FindGameObjectWithTag (Tags.gameManager).GetComponent<GameManager> ();
 	}
 	
 
@@ -33,7 +33,7 @@ public class ThrowBall : MonoBehaviour {
 		if (!possesedBall)
 			initiated = true;
 
-		if (Input.GetAxis ("Throw") != 0.0f && possesedBall) {
+		if (Input.GetAxis ("Throw") != 0.0f && possesedBall && !m_lock) {
 			if (!isMagnetic)
 				m_movementBall = balls[0].GetComponent<BallMovement> ();
 			else
@@ -110,4 +110,7 @@ public class ThrowBall : MonoBehaviour {
 		return initiated;
 	}
 
+	public void LockInput(){
+		m_lock = true;
+	}
 }
