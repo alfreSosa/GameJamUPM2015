@@ -33,9 +33,9 @@ public class itemFireBall : MonoBehaviour {
 	}
 	
 	void DoFunction() {
-		GameObject[] players = GameObject.FindGameObjectsWithTag (Tags.player);
-		int size = players.Length;
+		GameObject[] balls = GameObject.FindGameObjectsWithTag (Tags.ball);
+		int size = balls.Length;
 		for (int i = 0; i < size; i++)
-			players [i].GetComponent<MovementCube> ().GetDrunk ();
+			balls [i].GetComponent<BallMovement> ().SetFire (true);
 	}
 }
