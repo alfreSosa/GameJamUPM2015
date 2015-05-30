@@ -10,4 +10,5 @@ public class Tags {
 	public const string ball = "Ball";
 	public const string gameManager = "GameManager";
 	public const string enemy = "Enemy";
+	public const string fade = "Fade";
 }

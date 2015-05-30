@@ -23,22 +23,21 @@ public class GameManager : MonoBehaviour {
 	private bool m_lostSpeed = false;
 	private bool m_gainSpeed = false;
 	private bool m_triangleGameOver = false;
-	private bool m_victory = false;
 	private GameObject[] boxes;
 	private int numberBricks = 1;
 	private bool init = false;
+
 	void Start() {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		players = GameObject.FindGameObjectsWithTag (Tags.player);
 	}
 	
 	void Update () {
-		//Debug.Log (numberBricks);
 		if (!init) {
 			ResetLevel();
 			init = true;
-
 		}
+
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		switch (TypeLevel) {
 		case LevelType.Cube:
@@ -120,7 +119,7 @@ public class GameManager : MonoBehaviour {
 		int size = players.Length;
 		switch (lifes) {
 		case 0:
-			//derrota
+			Defeat();
 			break;
 		case 1:
 			for (int i = 0; i < size; i++)
@@ -248,7 +247,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Victory() {
-		m_victory = true;
-		Debug.Log("Victory");
+		GameObject fade = GameObject.FindGameObjectWithTag (Tags.fade);
+		fade.GetComponent<ScreenFader>().End_Game (true);
+	}
+
+	void Defeat() {
+		GameObject fade = GameObject.FindGameObjectWithTag (Tags.fade);
+		fade.GetComponent<ScreenFader>().End_Game (false);
 	}
 }

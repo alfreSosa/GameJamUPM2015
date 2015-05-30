@@ -12,6 +12,8 @@ public class ScreenFader : MonoBehaviour {
 
 	private float m_timer = 0;
 
+	private bool m_victory = false;
+
 	void Start (){
 		m_image = GetComponent<Image> ();
 	}
@@ -50,8 +52,9 @@ public class ScreenFader : MonoBehaviour {
 		}
 	}
 	
-	public void End (){
+	public void End_Game (bool victory){
 		m_sceneEnding = true;
+		m_victory = victory;
 	}
 	
 	void EndScene (){
