@@ -6,10 +6,10 @@ public class boxScript : MonoBehaviour {
 	public int life = 1;
 	public bool hasDrop = false;
 	public bool breakable = true;
-
+	public Sprite[] altImages;
 	public GameObject[] items;
 	public int[] percentage;
-	
+	private int actualImage = 0;
 	// Use this for initialization
 	void Start () {
 
@@ -18,10 +18,14 @@ public class boxScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (breakable) {
 			if (collision.gameObject.tag == Tags.ball) {
-				if(collision.gameObject.GetComponent<BallMovement> ().GetFire ())
+				if(collision.gameObject.GetComponent<BallMovement> ().GetFire ()) {
 					life = 0;
-				else
+				}else {
 					life--;
+					actualImage++;
+					if (actualImage < altImages.Length)
+						transform.GetComponent<SpriteRenderer>().sprite = altImages[actualImage];
+				}
 				if (life <= 0) {
 						GameObject gameManager = GameObject.FindGameObjectWithTag (Tags.gameManager);
 					
