@@ -4,6 +4,7 @@ using System.Collections;
 public class BallMovement : MonoBehaviour {
 	
 	public float speedMovement = 10.0f;
+	public float angleDesviation = 10;
 	private Rigidbody2D rb2D;
 	private bool initMovement = false;
 	private bool m_fire = false;
@@ -23,7 +24,8 @@ public class BallMovement : MonoBehaviour {
 
 	public void InitMovement(Vector3 angle, GameObject p) {
 		if (!initMovement) {
-			transform.rotation = p.transform.rotation;
+			if (p)
+				transform.rotation = p.transform.rotation;
 			transform.eulerAngles += angle;
 			initMovement = true;
 			rb2D.AddForce (new Vector2(transform.up.x,transform.up.y) * speedMovement, ForceMode2D.Impulse);
@@ -51,6 +53,11 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
+		if (other.gameObject.tag != Tags.item) {
+			float angle = (Random.Range(-1, 1) >= 0) ? angleDesviation : -angleDesviation;
+			transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + angle);
+			Debug.Log(transform.eulerAngles);
+		}
 		if (other.gameObject.tag == Tags.player) {
 			if (other.gameObject.GetComponent<ThrowBall>().GetMagnetic())
 				other.gameObject.GetComponent<ThrowBall>().ResetMagnetic(transform.gameObject);

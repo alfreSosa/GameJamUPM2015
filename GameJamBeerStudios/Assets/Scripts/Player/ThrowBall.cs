@@ -16,7 +16,7 @@ public class ThrowBall : MonoBehaviour {
 	private GameObject ball;
 	private GameManager gManager;
 	private bool isMagnetic = false;
-
+	private bool possesedBall = true;
 	void Start () {
 		initiated = false;
 		arrow = transform.FindChild("Arrow");
@@ -31,6 +31,7 @@ public class ThrowBall : MonoBehaviour {
 		if (Input.GetAxis ("Throw") != 0.0f) {
 			arrow.GetComponent<SpriteRenderer>().enabled = false;
 			initiated = true;
+			possesedBall = false;
 			m_movementBall.InitMovement (mEulerAngles, transform.gameObject);
 		}
 		if (!initiated) {
@@ -46,6 +47,7 @@ public class ThrowBall : MonoBehaviour {
 	}
 
 	public void Reset() {
+		possesedBall = true;
 		transform.position = new Vector3 (X, Y, 0);
 		arrow.GetComponent<SpriteRenderer>().enabled = true;
 		initiated = false;
@@ -62,10 +64,11 @@ public class ThrowBall : MonoBehaviour {
 	}
 
 	public bool GetMagnetic() {
-		return isMagnetic;
+		return isMagnetic && !possesedBall;
 	}
 
 	public void ResetMagnetic(GameObject b) {
+		possesedBall = true;
 		arrow.GetComponent<SpriteRenderer>().enabled = true;
 		initiated = false;
 		mEulerAngles = new Vector3 (0, 0, 0);
