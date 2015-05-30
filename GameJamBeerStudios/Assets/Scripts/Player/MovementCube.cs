@@ -50,9 +50,9 @@ public class MovementCube : MonoBehaviour {
 			translation *= Time.deltaTime;
 			m_currentDistance += translation;
 			
-			if (m_currentDistance > max_distance) {
+			if (m_currentDistance >= max_distance) {
 				m_currentDistance = max_distance;
-			} else if (m_currentDistance < -max_distance) {
+			} else if (m_currentDistance <= -max_distance) {
 				m_currentDistance = -max_distance;
 			}
 			
