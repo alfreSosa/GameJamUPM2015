@@ -26,20 +26,19 @@ public class GameManager : MonoBehaviour {
 	private bool m_victory = false;
 	private GameObject[] boxes;
 	private int numberBricks = 1;
-
+	private bool init = false;
 	void Start() {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		players = GameObject.FindGameObjectsWithTag (Tags.player);
-		/*int size = players.Length;
-		for (int i = 0; i < size; i++)
-			players [i].GetComponent<ThrowBall> ().Reset ();
-		
-		balls [0].GetComponent<BallMovement> ().Reset ();*/
 	}
 	
 	void Update () {
 		//Debug.Log (numberBricks);
+		if (!init) {
+			ResetLevel();
+			init = true;
 
+		}
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		switch (TypeLevel) {
 		case LevelType.Cube:
@@ -148,6 +147,19 @@ public class GameManager : MonoBehaviour {
 			players [i].GetComponent<ThrowBall> ().Reset ();
 
 		balls [0].GetComponent<BallMovement> ().Reset ();
+
+		int id = -1;
+		float min = 10000000;
+		for (int i = 0; i < size; i++) {
+			Vector3 vec = players [i].transform.position - balls[0].transform.position;
+			float dis = vec.x * vec.x + vec.y * vec.y;
+			if (dis < min)  {
+				id = i;
+				min = dis;
+			}
+		}
+		players [id].GetComponent<ThrowBall> ().possesedBall = true;
+
 	}
 
 	public LevelType GetLevelType() {

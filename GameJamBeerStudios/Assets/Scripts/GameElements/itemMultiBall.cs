@@ -28,7 +28,8 @@ public class itemMultiBall : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.tag == Tags.player) {
-			DoFunction();
+			if (other.gameObject.transform.GetComponent<ThrowBall>().isInitiated())
+				DoFunction();
 			Destroy (gameObject);
 		}
 		
@@ -41,7 +42,7 @@ public class itemMultiBall : MonoBehaviour {
 	void DoFunction() {
 		GameObject bola = GameObject.FindGameObjectWithTag (Tags.ball);
 		Vector3 position = bola.transform.position;
-		Vector3 euler = bola.transform.localEulerAngles;
+		Vector3 euler = bola.transform.eulerAngles;
 		for (int i = 0; i < BallsNumber; i++) {
 			euler += new Vector3(0,0, AngleSeparation);
 			Quaternion quat = new Quaternion(0,0,0,0);

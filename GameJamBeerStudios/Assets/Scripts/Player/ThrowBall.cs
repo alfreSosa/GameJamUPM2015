@@ -16,13 +16,12 @@ public class ThrowBall : MonoBehaviour {
 	private GameObject[] balls;
 	private GameManager gManager;
 	private bool isMagnetic = false;
-	private bool possesedBall = true;
+	public bool possesedBall = false;
+
 	void Start () {
 		initiated = false;
 		arrow = transform.FindChild("Arrow");
 		mEulerAngles = arrow.localEulerAngles;
-
-
 		gManager = GameObject.FindGameObjectWithTag (Tags.gameManager).GetComponent<GameManager> ();
 	}
 	
@@ -30,13 +29,13 @@ public class ThrowBall : MonoBehaviour {
 	void Update () {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		m_movementBall = balls[0].GetComponent<BallMovement> ();
-		if (Input.GetAxis ("Throw") != 0.0f) {
+		if (Input.GetAxis ("Throw") != 0.0f && possesedBall) {
 			arrow.GetComponent<SpriteRenderer>().enabled = false;
 			initiated = true;
 			possesedBall = false;
 			m_movementBall.InitMovement (mEulerAngles, transform.gameObject);
 		}
-		if (!initiated) {
+		if (!initiated && possesedBall) {
 			mEulerAngles = new Vector3(mEulerAngles.x, mEulerAngles.y, mEulerAngles.z + ArrowSpeed * Time.deltaTime * direction);
 			if (mEulerAngles.z >= 45)
 				direction = -1;
@@ -49,7 +48,7 @@ public class ThrowBall : MonoBehaviour {
 	}
 
 	public void Reset() {
-		possesedBall = true;
+		possesedBall = false;
 		transform.position = new Vector3 (X, Y, 0);
 		GetComponent<MovementCube>().ResetMovement ();
 		arrow.GetComponent<SpriteRenderer>().enabled = true;
@@ -59,6 +58,9 @@ public class ThrowBall : MonoBehaviour {
 		direction = 1;
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		balls[0].transform.position = transform.position + transform.up * offsetBall;
+		if (balls.Length > 1)
+			for (int i = 1; i < balls.Length; i++)
+				Destroy (balls [i]);
 	}
 
 	
@@ -77,10 +79,16 @@ public class ThrowBall : MonoBehaviour {
 		mEulerAngles = new Vector3 (0, 0, 0);
 		arrow.localEulerAngles = mEulerAngles;
 		direction = 1;
+
 		b.transform.position = transform.position + transform.up * offsetBall;
 		b.transform.eulerAngles = new Vector3 (0, 0, 0);
 		b.GetComponent<Rigidbody2D>().velocity = new Vector3 (0, 0, 0);
 		b.GetComponent<BallMovement>().SetInitMovement(false);
 		isMagnetic = false;
 	}
+
+	public bool isInitiated() {
+		return initiated;
+	}
+
 }
