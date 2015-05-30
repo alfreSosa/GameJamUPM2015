@@ -16,6 +16,8 @@ public class MovementCube : MonoBehaviour {
 	public float radious = 5.0f;
 	public float angularSpeed = 50.0f;
 
+	private float m_currentDistance = 0;
+
 	public float DrunkDuration = 5.0f;
 
 	private float angle = 0;
@@ -44,13 +46,16 @@ public class MovementCube : MonoBehaviour {
 		case MovementType.Normal:
 			float translation = direction * speedMovement;
 			translation *= Time.deltaTime;
-			transform.Translate(transform.right * translation);
-			float dot = Vector3.Dot(transform.right, transform.position);
-			float dotUp = Vector3.Dot(transform.up, transform.position);
-			if (dot >= max_distance)
-				transform.position = transform.right * max_distance + transform.up * dotUp;
-			if (dot <= -max_distance)
-				transform.position = transform.right * -max_distance + transform.up * dotUp;
+			m_currentDistance += translation;
+			
+			if (m_currentDistance > max_distance) {
+				m_currentDistance = max_distance;
+			} else if (m_currentDistance < -max_distance) {
+				m_currentDistance = -max_distance;
+			}
+			
+			if (m_currentDistance < max_distance && m_currentDistance > -max_distance)
+				transform.position += transform.right * translation;
 			break;
 		case MovementType.Circular:
 			float rot = -direction * angularSpeed * Time.deltaTime;

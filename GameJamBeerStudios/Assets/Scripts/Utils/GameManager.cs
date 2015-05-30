@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour {
 	private bool m_life = false;
 	private bool m_lostSpeed = false;
 	private bool m_gainSpeed = false;
+	private bool m_triangleGameOver = false;
 
 	void Start () {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
@@ -61,6 +62,15 @@ public class GameManager : MonoBehaviour {
 			}
 			break;
 		case LevelType.Triangle:
+			if (m_triangleGameOver) {
+				LoseLife ();
+				ResetLevel();
+				ResetItem();
+				m_triangleGameOver = false;
+				int size = players.Length;
+				for (int i = 0; i < size; i++)
+					players [i].GetComponent<ThrowBall> ().SetMagnetic(false);
+			}
 			break;
 		}
 	}
@@ -174,5 +184,16 @@ public class GameManager : MonoBehaviour {
 	
 	public bool GetGainSpeedItem(){
 		return m_gainSpeed;
+	}
+
+	public void RemoveBall(GameObject b)
+	{
+		if (b.tag == Tags.ball) {
+			if (balls.Length > 1)
+				Destroy(b);
+			else
+				m_triangleGameOver = true;
+		}
+		
 	}
 }
