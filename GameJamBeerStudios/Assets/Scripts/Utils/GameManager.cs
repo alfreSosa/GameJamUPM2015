@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour {
 				if (balls[0].transform.position.y < players[0].transform.position.y) {
 					LoseLife ();
 					ResetLevel();
+					int size = players.Length;
+					for (int i = 0; i < size; i++)
+						players [i].GetComponent<ThrowBall> ().SetMagnetic(false);
 				}
 			}
 			break;

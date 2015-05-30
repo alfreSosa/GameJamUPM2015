@@ -53,7 +53,7 @@ public class MovementCube : MonoBehaviour {
 				transform.position = transform.right * -max_distance + transform.up * dotUp;
 			break;
 		case MovementType.Circular:
-			float rot = direction * angularSpeed * Time.deltaTime;
+			float rot = -direction * angularSpeed * Time.deltaTime;
 			angle -= rot;
 			
 			//movement
