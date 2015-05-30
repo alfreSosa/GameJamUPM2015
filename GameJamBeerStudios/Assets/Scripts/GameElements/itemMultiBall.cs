@@ -5,7 +5,7 @@ public class itemMultiBall : MonoBehaviour {
 	public float speed = 1;
 	public int BallsNumber = 3;
 	public float BallsSpeed = 5;
-	public float AngleSeparation = 45;
+	public float AngleSeparation = 90;
 	private Vector3 vec0;
 	private Vector3 vec1;
 

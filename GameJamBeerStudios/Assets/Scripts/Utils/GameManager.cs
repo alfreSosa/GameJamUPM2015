@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 
 	public LevelType TypeLevel = LevelType.Cube;
 	public int lifes = 3;
+	public float RadiousLevel = 5.0f;
 	private GameObject[] balls;
 	private GameObject[] players;
 
@@ -47,6 +48,17 @@ public class GameManager : MonoBehaviour {
 			}
 			break;
 		case LevelType.Circle:
+			if (balls.Length == 1){
+				float distanceBall = Mathf.Sqrt(balls[0].transform.position.x * balls[0].transform.position.x + balls[0].transform.position.y * balls[0].transform.position.y);
+				if (distanceBall > RadiousLevel) {
+					LoseLife ();
+					ResetLevel();
+					ResetItem();
+					int size = players.Length;
+					for (int i = 0; i < size; i++)
+						players [i].GetComponent<ThrowBall> ().SetMagnetic(false);
+				}
+			}
 			break;
 		case LevelType.Triangle:
 			break;

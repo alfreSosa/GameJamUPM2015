@@ -4,12 +4,13 @@ using System.Collections;
 public class BallMovement : MonoBehaviour {
 	
 	public float speedMovement = 10.0f;
-	public float angleDesviation = 10;
+	public float angleDesviation = 10.0f;
 	private Rigidbody2D rb2D;
 	private bool initMovement = false;
 	private bool m_fire = false;
 	public float fireTime = 5.0f;
-	private float m_currentFireTime = 0;
+	private float m_currentFireTime = 0.0f;
+
 	void Start () {
 		rb2D = GetComponent<Rigidbody2D> ();
 	}
@@ -32,8 +33,7 @@ public class BallMovement : MonoBehaviour {
 		}
 	}
 
-	public void Reset()
-	{
+	public void Reset()	{
 		rb2D.velocity = new Vector3 (0, 0, 0);
 		initMovement = false;
 		transform.eulerAngles = new Vector3 (0, 0, 0);
@@ -42,6 +42,7 @@ public class BallMovement : MonoBehaviour {
 	public void SetInitMovement(bool b) {
 		initMovement = b;
 	}
+
 	public void SetFire( bool enable) {
 		m_fire = enable;
 		if (enable)
@@ -54,9 +55,19 @@ public class BallMovement : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag != Tags.item) {
-			float angle = (Random.Range(-1, 1) >= 0) ? angleDesviation : -angleDesviation;
-			transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + angle);
-			Debug.Log(transform.eulerAngles);
+			Vector3 vel = rb2D.velocity;
+			rb2D.velocity = new Vector3(0,0,0);
+			float tan = vel.y/vel.x;
+			float angle = Mathf.Atan(tan) * Mathf.Rad2Deg;
+			transform.eulerAngles = new Vector3 (0, 0, angle);
+			float d = Vector3.Dot(vel, transform.up);
+			while (d < 0.01){
+				transform.eulerAngles += new Vector3 (0, 0, 90);
+				d = Vector3.Dot(vel, transform.up);
+			}
+			float value = Random.Range(-angleDesviation, angleDesviation);
+			transform.eulerAngles += new Vector3 (0, 0, value);
+			rb2D.AddForce (new Vector2(transform.up.x,transform.up.y) * speedMovement, ForceMode2D.Impulse);
 		}
 		if (other.gameObject.tag == Tags.player) {
 			if (other.gameObject.GetComponent<ThrowBall>().GetMagnetic())
