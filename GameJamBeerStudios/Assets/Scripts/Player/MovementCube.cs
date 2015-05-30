@@ -74,4 +74,5 @@ public class MovementCube : MonoBehaviour {
 		drunkElapsed = 0.0f;
 		isDrunk = true;
 	}
+
 }

@@ -15,6 +15,7 @@ public class ThrowBall : MonoBehaviour {
 	private Vector3 mEulerAngles = new Vector3(0,0,0);
 	private GameObject ball;
 	private GameManager gManager;
+	private bool isMagnetic = false;
 
 	void Start () {
 		initiated = false;
@@ -53,5 +54,25 @@ public class ThrowBall : MonoBehaviour {
 		direction = 1;
 		ball = GameObject.FindGameObjectWithTag (Tags.ball);
 		ball.transform.position = transform.position + transform.up * offsetBall;
+	}
+
+	
+	public void SetMagnetic(bool magnetic) {
+		isMagnetic = magnetic;
+	}
+
+	public bool GetMagnetic() {
+		return isMagnetic;
+	}
+
+	public void ResetMagnetic() {
+		arrow.GetComponent<SpriteRenderer>().enabled = true;
+		initiated = false;
+		mEulerAngles = new Vector3 (0, 0, 0);
+		arrow.localEulerAngles = mEulerAngles;
+		direction = 1;
+		ball = GameObject.FindGameObjectWithTag (Tags.ball);
+		ball.transform.position = transform.position + transform.up * offsetBall;
+		isMagnetic = false;
 	}
 }
