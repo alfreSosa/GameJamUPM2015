@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 	};
 
 	public LevelType TypeLevel = LevelType.Cube;
-	public float lifes = 3;
+	public int lifes = 3;
 	private GameObject[] balls;
 	private GameObject[] players;
 
@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
-		Debug.Log (lifes);
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		switch (TypeLevel) {
 		case LevelType.Cube:
@@ -41,17 +40,43 @@ public class GameManager : MonoBehaviour {
 		case LevelType.Triangle:
 			break;
 		}
-
-		
 	}
 	
 	public void LoseLife() {
 		lifes--;
+		changeSizeplayer ();
 	}
 
 	public void AddLife() {
-		if (lifes < 4)
+		if (lifes < 4) {
 			lifes++;
+			changeSizeplayer ();
+		}
+	}
+
+	void changeSizeplayer () {
+		int size = players.Length;
+		switch (lifes) {
+		case 0:
+			//derrota
+			break;
+		case 1:
+			for (int i = 0; i < size; i++)
+				players [i].transform.localScale = new Vector3(0.33f, 1.0f, 1.0f);
+			break;
+		case 2:
+			for (int i = 0; i < size; i++)
+				players [i].transform.localScale = new Vector3(0.66f, 1.0f, 1.0f);
+			break;
+		case 3:
+			for (int i = 0; i < size; i++)
+				players [i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+			break;
+		case 4:
+			for (int i = 0; i < size; i++)
+				players [i].transform.localScale = new Vector3(1.33f, 1.0f, 1.0f);
+			break;
+		}
 	}
 
 	public void ResetLevel() {

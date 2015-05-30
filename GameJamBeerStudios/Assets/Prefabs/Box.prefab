@@ -72,9 +72,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   hasDrop: 0
-  drop: 0
+  breakable: 1
   items:
   - {fileID: 112384, guid: 60cb56a8a9a01444d99901b117a95c3c, type: 2}
+  - {fileID: 112384, guid: 60cb56a8a9a01444d99901b117a95c3c, type: 2}
+  - {fileID: 112384, guid: 60cb56a8a9a01444d99901b117a95c3c, type: 2}
+  - {fileID: 112384, guid: 60cb56a8a9a01444d99901b117a95c3c, type: 2}
+  - {fileID: 112384, guid: 60cb56a8a9a01444d99901b117a95c3c, type: 2}
+  - {fileID: 112384, guid: 60cb56a8a9a01444d99901b117a95c3c, type: 2}
+  - {fileID: 112384, guid: 60cb56a8a9a01444d99901b117a95c3c, type: 2}
+  percentage: 0f0000001e000000280000003c000000460000005500000064000000
 --- !u!212 &21287606
 SpriteRenderer:
   m_ObjectHideFlags: 1
