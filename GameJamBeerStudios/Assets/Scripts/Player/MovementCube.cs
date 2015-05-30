@@ -82,4 +82,8 @@ public class MovementCube : MonoBehaviour {
 		isDrunk = true;
 	}
 
+	public void ResetMovement() {
+		m_currentDistance = 0;
+	}
+
 }

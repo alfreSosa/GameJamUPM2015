@@ -13,7 +13,7 @@ public class ThrowBall : MonoBehaviour {
 	private bool initiated = false;
 	private int direction = 1;
 	private Vector3 mEulerAngles = new Vector3(0,0,0);
-	private GameObject ball;
+	private GameObject[] balls;
 	private GameManager gManager;
 	private bool isMagnetic = false;
 	private bool possesedBall = true;
@@ -21,13 +21,15 @@ public class ThrowBall : MonoBehaviour {
 		initiated = false;
 		arrow = transform.FindChild("Arrow");
 		mEulerAngles = arrow.localEulerAngles;
-		ball = GameObject.FindGameObjectWithTag (Tags.ball);
-		m_movementBall = ball.GetComponent<BallMovement> ();
+
+
 		gManager = GameObject.FindGameObjectWithTag (Tags.gameManager).GetComponent<GameManager> ();
 	}
 	
 
 	void Update () {
+		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
+		m_movementBall = balls[0].GetComponent<BallMovement> ();
 		if (Input.GetAxis ("Throw") != 0.0f) {
 			arrow.GetComponent<SpriteRenderer>().enabled = false;
 			initiated = true;
@@ -41,7 +43,7 @@ public class ThrowBall : MonoBehaviour {
 			if (mEulerAngles.z <= -45 )
 				direction = 1;
 			arrow.localEulerAngles = mEulerAngles;
-			ball.transform.position = transform.position + transform.up * offsetBall;
+			balls[0].transform.position = transform.position + transform.up * offsetBall;
 			
 		}
 	}
@@ -49,13 +51,14 @@ public class ThrowBall : MonoBehaviour {
 	public void Reset() {
 		possesedBall = true;
 		transform.position = new Vector3 (X, Y, 0);
+		GetComponent<MovementCube>().ResetMovement ();
 		arrow.GetComponent<SpriteRenderer>().enabled = true;
 		initiated = false;
 		mEulerAngles = new Vector3 (0, 0, 0);
 		arrow.localEulerAngles = mEulerAngles;
 		direction = 1;
-		ball = GameObject.FindGameObjectWithTag (Tags.ball);
-		ball.transform.position = transform.position + transform.up * offsetBall;
+		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
+		balls[0].transform.position = transform.position + transform.up * offsetBall;
 	}
 
 	
