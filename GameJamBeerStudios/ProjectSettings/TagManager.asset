@@ -9,6 +9,7 @@ TagManager:
   - Ball
   - GameManager
   - Arrow
+  - Enemy
   layers:
   - Default
   - TransparentFX
