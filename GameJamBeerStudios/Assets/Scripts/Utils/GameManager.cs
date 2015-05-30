@@ -48,6 +48,10 @@ public class GameManager : MonoBehaviour {
 					LoseLife ();
 					ResetLevel();
 					ResetItem();
+					GameObject[] items = GameObject.FindGameObjectsWithTag(Tags.item);
+					int itemSize = items.Length;
+					for (int j = itemSize - 1; j >= 0; j--)
+						Destroy(items[j]);
 					int size = players.Length;
 					for (int i = 0; i < size; i++)
 						players [i].GetComponent<ThrowBall> ().SetMagnetic(false);
@@ -64,6 +68,11 @@ public class GameManager : MonoBehaviour {
 					LoseLife ();
 					ResetLevel();
 					ResetItem();
+					GameObject[] items = GameObject.FindGameObjectsWithTag(Tags.item);
+					int itemSize = items.Length;
+					for (int j = itemSize - 1; j >= 0; j--)
+						Destroy(items[j]);
+
 					int size = players.Length;
 					for (int i = 0; i < size; i++)
 						players [i].GetComponent<ThrowBall> ().SetMagnetic(false);
@@ -77,6 +86,11 @@ public class GameManager : MonoBehaviour {
 				LoseLife ();
 				ResetLevel();
 				ResetItem();
+				GameObject[] items = GameObject.FindGameObjectsWithTag(Tags.item);
+				int itemSize = items.Length;
+				for (int j = itemSize - 1; j >= 0; j--)
+					Destroy(items[j]);
+
 				m_triangleGameOver = false;
 				int size = players.Length;
 				for (int i = 0; i < size; i++)
@@ -91,6 +105,11 @@ public class GameManager : MonoBehaviour {
 					LoseLife ();
 					ResetLevel();
 					ResetItem();
+					GameObject[] items = GameObject.FindGameObjectsWithTag(Tags.item);
+					int itemSize = items.Length;
+					for (int j = itemSize - 1; j >= 0; j--)
+						Destroy(items[j]);
+
 					int size = players.Length;
 					for (int i = 0; i < size; i++)
 						players [i].GetComponent<ThrowBall> ().SetMagnetic(false);
@@ -263,11 +282,20 @@ public class GameManager : MonoBehaviour {
 	public void Victory() {
 		GameObject fade = GameObject.FindGameObjectWithTag (Tags.fade);
 		fade.GetComponent<ScreenFader> ().End_Game (true);
+		int size = players.Length;
+		for (int i = 0; i < size; i++) {
+			players [i].GetComponent<MovementCube> ().LockInput ();
+			players [i].GetComponent<ThrowBall> ().LockInput ();
+		}
 	}
-
+	
 	void Defeat() {
 		GameObject fade = GameObject.FindGameObjectWithTag (Tags.fade);
 		fade.GetComponent<ScreenFader> ().End_Game (false);
-
+		int size = players.Length;
+		for (int i = 0; i < size; i++) {
+			players [i].GetComponent<MovementCube> ().LockInput ();
+			players [i].GetComponent<ThrowBall> ().LockInput ();
+		}
 	}
 }

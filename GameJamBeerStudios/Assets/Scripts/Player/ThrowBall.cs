@@ -61,6 +61,7 @@ public class ThrowBall : MonoBehaviour {
 	}
 
 	public void Reset() {
+		magneticBall = null;
 		possesedBall = false;
 		transform.position = new Vector3 (X, Y, 0);
 		GetComponent<MovementCube>().ResetMovement ();
