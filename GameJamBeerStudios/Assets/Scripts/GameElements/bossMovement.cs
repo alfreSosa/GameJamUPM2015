@@ -36,6 +36,10 @@ public class bossMovement : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == Tags.ball) {
+			Transform[] t = GetComponentsInChildren<Transform>();
+			if (t.Length >= 1)
+				Destroy(t[t.Length - 1].gameObject);
+
 			life--;
 			if(life <= secondPhaseLife)
 				m_secondPhase = true;
@@ -67,6 +71,7 @@ public class bossMovement : MonoBehaviour {
 	}
 
 	void phase2(){
+		Debug.Log (m_countMinion);
 		m_countMinion += Time.deltaTime;
 		if (m_countMinion > timeToMinion) {
 			m_countMinion = 0;
