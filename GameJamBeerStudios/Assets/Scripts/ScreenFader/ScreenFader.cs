@@ -12,6 +12,9 @@ public class ScreenFader : MonoBehaviour {
 	private Image m_imageVictory;
 	private Image m_imageDefeat;
 
+	private Button[] m_buttonVictory;
+	private Button[] m_buttonDefeat;
+
 	private float m_timer = 0;
 
 	private bool m_victory = false;
@@ -23,6 +26,15 @@ public class ScreenFader : MonoBehaviour {
 
 		m_imageVictory.enabled = false;
 		m_imageDefeat.enabled = false;
+		m_imageVictory.color = Color.clear;
+		m_imageDefeat.color = Color.clear;
+		m_buttonVictory = GameObject.FindGameObjectWithTag (Tags.victory).GetComponentsInChildren<Button> ();
+		m_buttonDefeat = GameObject.FindGameObjectWithTag (Tags.defeat).GetComponentsInChildren<Button> ();
+
+		for (int i = 0; i< m_buttonVictory.Length; i++)
+			m_buttonVictory [i].enabled = false;
+		for (int i = 0; i< m_buttonDefeat.Length; i++)
+			m_buttonDefeat [i].enabled = false;
 	}
 	
 	void Update (){
@@ -37,7 +49,17 @@ public class ScreenFader : MonoBehaviour {
 	}
 
 	void FadeToBlack (){
-		m_imageChapter.color = Color.Lerp(m_imageChapter.color, Color.black, fadeOutSpeed * Time.deltaTime);
+		if (m_victory) {
+			m_imageVictory.enabled = true;
+			for (int i = 0; i< m_buttonVictory.Length; i++)
+				m_buttonVictory [i].enabled = true;
+			m_imageVictory.color = Color.Lerp (m_imageVictory.color, Color.white, fadeOutSpeed * Time.deltaTime);
+		} else {
+			m_imageDefeat.enabled = true;
+			for (int i = 0; i< m_buttonDefeat.Length; i++)
+				m_buttonDefeat [i].enabled = true;
+			m_imageDefeat.color = Color.Lerp (m_imageDefeat.color, Color.white, fadeOutSpeed * Time.deltaTime);
+		}
 	}
 
 	void StartScene (){
@@ -66,15 +88,7 @@ public class ScreenFader : MonoBehaviour {
 	void EndScene (){
 		if (m_change) {
 			if (m_imageChapter.color.a >= 0.95f) {
-				if (m_victory) {
-					m_imageChapter.color = Color.clear;
-					m_imageVictory.enabled = true;
-					m_change = false;
-				} else{
-					m_imageChapter.color = Color.clear;
-					m_imageDefeat.enabled = true;
-					m_change = false;
-				}
+				m_change = false;
 			} else {
 				m_sceneStarting = false;
 			
