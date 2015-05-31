@@ -24,16 +24,46 @@ public class InitialTransition : MonoBehaviour {
 
 			if(m_currentTime <= times[0])
 				m_images[0].enabled = true;
-			else if(m_currentTime <= times[1])
+			else if(m_currentTime <= times[1]){
+				m_images[0].enabled = false;
 				m_images[1].enabled = true;
-			else if(m_currentTime <= times[2])
+			}
+			else if(m_currentTime <= times[2]){
+				m_images[1].enabled = false;
 				m_images[2].enabled = true;
-			else if(m_currentTime <= times[3])
+			}
+			else if(m_currentTime <= times[3]){
+				m_images[2].enabled = false;
 				m_images[3].enabled = true;
-			else if(m_currentTime <= times[4])
+			}
+			else if(m_currentTime <= times[4]){
+				m_images[3].enabled = false;
 				m_images[4].enabled = true;
-			else if(m_currentTime <= times[5])
+			}
+			else if(m_currentTime <= times[5]){
+				m_images[4].enabled = false;
 				m_images[5].enabled = true;
+			}
+			else if(m_currentTime <= times[6]){
+				m_images[5].enabled = false;
+				m_images[6].enabled = true;
+			}
+			else if(m_currentTime <= times[7]){
+				m_images[6].enabled = false;
+				m_images[7].enabled = true;
+			}
+			else if(m_currentTime <= times[8]){
+				m_images[7].enabled = false;
+				m_images[8].enabled = true;
+			}
+			else if(m_currentTime <= times[9]){
+				m_images[8].enabled = false;
+				m_images[9].enabled = true;
+			}
+			else if(m_currentTime <= times[10]){
+				m_images[9].enabled = false;
+				m_images[10].enabled = true;
+			}
 			else 
 				Application.LoadLevel ("SelectGames");
 		}
