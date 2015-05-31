@@ -3,9 +3,9 @@ using System.Collections;
 
 public class itemFireBall : MonoBehaviour {
 	public float speed = 1;
-	
 	private Vector3 vec0;
 	private Vector3 vec1;
+
 	
 	// Use this for initialization
 	void Start () {

@@ -9,6 +9,7 @@ public class boxScript : MonoBehaviour {
 	public Sprite[] altImages;
 	public GameObject[] items;
 	public int[] percentage;
+	public GameObject explosion;
 	private int actualImage = 0;
 	// Use this for initialization
 	void Start () {
@@ -28,7 +29,7 @@ public class boxScript : MonoBehaviour {
 				}
 				if (life <= 0) {
 						GameObject gameManager = GameObject.FindGameObjectWithTag (Tags.gameManager);
-					
+
 					if (hasDrop) {
 						bool success = false;
 
@@ -82,7 +83,12 @@ public class boxScript : MonoBehaviour {
 						}
 						
 					}
-					gameManager.GetComponent<GameManager> ().DestroyBrick();
+
+					if (gameObject.tag == Tags.enemy)
+						Instantiate(explosion, transform.position, transform.rotation);
+					else
+						gameManager.GetComponent<GameManager> ().DestroyBrick();
+
 					Destroy (gameObject);
 				}
 			}

@@ -16,18 +16,22 @@ public class bossMovement : MonoBehaviour {
 	public GameObject minion;
 	public float timeToMinion = 1.0f;
 	private float m_countMinion = 0.0f;
-
+	public GameObject vida;
+	private Vector3 positionVida;
 	// Use this for initialization
 	void Start () {
+		positionVida = vida.transform.position;
 		m_initialPosition = transform.position;
 		m_initialVector = transform.right;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 		phase1 ();
 		if(m_secondPhase)
 			phase2 ();
+		vida.transform.position = positionVida;
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {

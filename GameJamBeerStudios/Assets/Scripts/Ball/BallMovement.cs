@@ -7,7 +7,7 @@ public class BallMovement : MonoBehaviour {
 	public float angleDesviation = 10.0f;
 	public float timeForEvolution = 45.0f;
 	public float speedEvolution = 3.0f;
-
+	private float origSpeed;
 	private float m_elapsedEvolution = 0.0f;
 	private Rigidbody2D rb2D;
 	private bool initMovement = false;
@@ -15,8 +15,11 @@ public class BallMovement : MonoBehaviour {
 	public float fireTime = 5.0f;
 	private float m_currentFireTime = 0.0f;
 	private AudioSource[] sounds;
+	Animator anim;
 
 	void Start () {
+		origSpeed = speedMovement;
+		anim = GetComponent<Animator>();
 		rb2D = GetComponent<Rigidbody2D> ();
 		sounds = GetComponents<AudioSource>();
 	}
@@ -31,8 +34,10 @@ public class BallMovement : MonoBehaviour {
 		}
 		if (m_fire) {
 			m_currentFireTime -= Time.deltaTime;
-			if(m_currentFireTime <= 0)
+			if(m_currentFireTime <= 0){
+				anim.SetBool("isFire", false);
 				m_fire = false;
+			}
 		}
 	}
 
@@ -47,6 +52,7 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	public void Reset()	{
+		speedMovement = origSpeed;
 		rb2D.velocity = new Vector3 (0, 0, 0);
 		initMovement = false;
 		transform.eulerAngles = new Vector3 (0, 0, 0);
@@ -59,8 +65,12 @@ public class BallMovement : MonoBehaviour {
 	public void SetFire( bool enable) {
 		sounds [1].Play ();
 		m_fire = enable;
-		if (enable)
+		if (enable) {
 			m_currentFireTime = fireTime;
+			anim.SetBool("isFire", true);
+		}
+
+		
 	}
 
 	public bool GetFire() {

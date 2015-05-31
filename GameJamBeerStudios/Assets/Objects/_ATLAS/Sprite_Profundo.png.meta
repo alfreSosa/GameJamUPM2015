@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ec1b070d904e67244b8d715fd9b34477
-timeCreated: 1433029835
+timeCreated: 1433043096
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -43,7 +43,7 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
+  alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
@@ -55,20 +55,20 @@ TextureImporter:
     - name: Sprite_Profundo_0
       rect:
         serializedVersion: 2
-        x: 105
-        y: 640
+        x: 0
+        y: 0
         width: 262
-        height: 289
+        height: 256
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Sprite_Profundo_2
       rect:
         serializedVersion: 2
-        x: 442
-        y: 646
-        width: 231
-        height: 292
+        x: 345
+        y: 4
+        width: 223
+        height: 261
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

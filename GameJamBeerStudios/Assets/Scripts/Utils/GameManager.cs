@@ -299,7 +299,7 @@ public class GameManager : MonoBehaviour {
 		sounds [4].Play ();
 		sounds [3].Play ();
 		GameObject fade = GameObject.FindGameObjectWithTag (Tags.fade);
-		fade.GetComponent<ScreenFader> ().End_Game (false);
+		//fade.GetComponent<ScreenFader> ().End_Game (false);
 		int size = players.Length;
 		for (int i = 0; i < size; i++) {
 			players [i].GetComponent<MovementCube> ().LockInput ();

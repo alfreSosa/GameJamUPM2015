@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 14be411b8f09c7f4f905a57a48f1550a
-timeCreated: 1433028846
+timeCreated: 1433042167
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -70,27 +70,27 @@ TextureImporter:
         width: 383
         height: 191
       alignment: 7
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Sprite_Blob_1
       rect:
         serializedVersion: 2
-        x: 460
+        x: 463
         y: 807
-        width: 406
+        width: 403
         height: 170
       alignment: 7
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Sprite_Blob_2
       rect:
         serializedVersion: 2
         x: 21
-        y: 599
+        y: 600
         width: 430
-        height: 150
+        height: 149
       alignment: 7
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Sprite_Blob_3
       rect:
@@ -100,14 +100,14 @@ TextureImporter:
         width: 383
         height: 191
       alignment: 7
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Sprite_Blob_4
       rect:
         serializedVersion: 2
-        x: 24
+        x: 25
         y: 398
-        width: 404
+        width: 403
         height: 170
       alignment: 7
       pivot: {x: .5, y: 0}
@@ -115,30 +115,30 @@ TextureImporter:
     - name: Sprite_Blob_5
       rect:
         serializedVersion: 2
-        x: 476
+        x: 478
         y: 407
-        width: 432
+        width: 430
         height: 149
-      alignment: 7
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sprite_Blob_6
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 181
-        width: 403
-        height: 201
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sprite_Blob_11
+    - name: Sprite_Blob_7
       rect:
         serializedVersion: 2
-        x: 464
-        y: 172
-        width: 435
-        height: 203
+        x: 24
+        y: 183
+        width: 393
+        height: 197
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sprite_Blob_8
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 177
+        width: 438
+        height: 198
       alignment: 7
       pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,7 +150,7 @@ TextureImporter:
         width: 430
         height: 149
       alignment: 7
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

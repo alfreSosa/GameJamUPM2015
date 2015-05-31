@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 85e56652591ebd04fa90e4d87c1acfe6
-timeCreated: 1433033289
+timeCreated: 1433042875
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -15,6 +15,7 @@ TextureImporter:
     21300016: Sprites_cuthulu_10
     21300018: Sprites_cuthulu_11
     21300020: Sprites_cuthulu_1
+    21300022: Sprites_cuthulu_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -63,42 +64,42 @@ TextureImporter:
     - name: Sprites_cuthulu_4
       rect:
         serializedVersion: 2
-        x: 1762
-        y: 2189
-        width: 713
-        height: 718
+        x: 1550
+        y: 82
+        width: 698
+        height: 707
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sprites_cuthulu_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 103
+        width: 744
+        height: 686
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Sprites_cuthulu_6
       rect:
         serializedVersion: 2
-        x: 208
-        y: 2205
-        width: 762
-        height: 718
+        x: 857
+        y: 89
+        width: 612
+        height: 700
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sprites_cuthulu_7
+    - name: Sprites_cuthulu_12
       rect:
         serializedVersion: 2
-        x: 1138
-        y: 2383
-        width: 4
-        height: 5
+        x: 322
+        y: 94
+        width: 5
+        height: 4
       alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Sprites_cuthulu_1
-      rect:
-        serializedVersion: 2
-        x: 1060
-        y: 2196
-        width: 616
-        height: 718
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

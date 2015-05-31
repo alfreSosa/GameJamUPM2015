@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bbcd684e55f16bb42811479625a80a67
-timeCreated: 1433031484
+timeCreated: 1433042688
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -56,42 +56,42 @@ TextureImporter:
     - name: Sprites_Tentaculos_0
       rect:
         serializedVersion: 2
-        x: 74
-        y: 672
+        x: 0
+        y: 339
         width: 217
-        height: 311
+        height: 276
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Sprites_Tentaculos_1
       rect:
         serializedVersion: 2
-        x: 343
-        y: 671
+        x: 269
+        y: 338
         width: 217
-        height: 311
+        height: 276
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Sprites_Tentaculos_2
       rect:
         serializedVersion: 2
-        x: 74
-        y: 338
+        x: 0
+        y: 4
         width: 217
-        height: 311
+        height: 277
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Sprites_Tentaculos_3
       rect:
         serializedVersion: 2
-        x: 349
-        y: 335
-        width: 219
-        height: 311
+        x: 275
+        y: 0
+        width: 217
+        height: 278
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
