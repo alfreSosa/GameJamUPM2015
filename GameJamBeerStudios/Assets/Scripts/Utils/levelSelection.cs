@@ -5,6 +5,9 @@ public class levelSelection : MonoBehaviour {
 
 	public void SelectLevel(int value) {
 		switch (value) {
+		case 0:
+			Application.LoadLevel ("creditos");
+			break;
 		case 1:
 			Application.LoadLevel ("nivel_01");
 			break;
