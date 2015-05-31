@@ -27,10 +27,13 @@ public class MovementCube : MonoBehaviour {
 
 	private bool m_lock = false;
 	private AudioSource[] sounds;
+
+	private Vector3 m_initialPosition;
 	
 	void Start () {
 		sounds = GetComponents<AudioSource>();
 		angle = transform.rotation.eulerAngles.z;
+		m_initialPosition = transform.position;
 	}
 
 	void Update () {
@@ -41,11 +44,13 @@ public class MovementCube : MonoBehaviour {
 				isDrunk = false;
 			}
 		}
+
 		float direction = 0;
 		if (Input.GetKey (KeyCode.RightArrow) && !m_lock)
 			direction = 1 * drunkDir;
 		if (Input.GetKey (KeyCode.LeftArrow) && !m_lock)
 			direction = -1 * drunkDir;
+
 		switch (TypeMovement) {
 		case MovementType.Normal:
 			float translation = direction * speedMovement;
@@ -87,6 +92,7 @@ public class MovementCube : MonoBehaviour {
 
 	public void ResetMovement() {
 		m_currentDistance = 0;
+		transform.position = m_initialPosition;
 	}
 
 	public void LockInput(){

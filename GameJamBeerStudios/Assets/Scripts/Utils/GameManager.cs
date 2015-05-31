@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 	private bool init = false;
 	private AudioSource[] sounds;
 	private bool soundLose = false;
+
 	void Start() {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
 		sounds = GetComponents<AudioSource>();
@@ -37,6 +38,9 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
+		if (Input.GetKey (KeyCode.Escape))
+			Application.LoadLevel ("SelectGames");
+
 		if (!init) {
 			ResetLevel();
 			init = true;
@@ -127,13 +131,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GainLife() {
-		sounds [1].Play ();
-		lifes++;
-		changeSizeplayer ();
-	}
-
-	public void AddLife() {
 		if (lifes < 4) {
+			sounds [1].Play ();
 			lifes++;
 			changeSizeplayer ();
 		}
