@@ -20,10 +20,12 @@ public class ThrowBall : MonoBehaviour {
 	public bool possesedBall = false;
 
 	private bool m_lock = false;
-
+	private AudioSource[] sounds;
+	
 	void Start () {
 		initiated = false;
 		arrow = transform.FindChild("Arrow");
+		sounds = GetComponents<AudioSource>();
 		mEulerAngles = arrow.localEulerAngles;
 	}
 	
@@ -81,6 +83,8 @@ public class ThrowBall : MonoBehaviour {
 	public void SetMagnetic(bool magnetic) {
 		if (!magnetic)
 			magneticBall = null;
+		else
+			sounds [1].Play ();
 		isMagnetic = magnetic;
 	}
 

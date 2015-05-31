@@ -28,9 +28,11 @@ public class GameManager : MonoBehaviour {
 	private GameObject[] boxes;
 	private int numberBricks = 1;
 	private bool init = false;
-
+	private AudioSource[] sounds;
+	private bool soundLose = false;
 	void Start() {
 		balls = GameObject.FindGameObjectsWithTag (Tags.ball);
+		sounds = GetComponents<AudioSource>();
 		players = GameObject.FindGameObjectsWithTag (Tags.player);
 	}
 	
@@ -125,6 +127,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GainLife() {
+		sounds [1].Play ();
 		lifes++;
 		changeSizeplayer ();
 	}
@@ -267,6 +270,7 @@ public class GameManager : MonoBehaviour {
 				if (s.breakable)
 					numberBricks++;
 		}
+		sounds [0].Play ();
 		numberBricks--;
 	}
 
@@ -280,6 +284,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Victory() {
+		if (!sounds[2].isPlaying)
+			sounds [2].Play ();
 		GameObject fade = GameObject.FindGameObjectWithTag (Tags.fade);
 		fade.GetComponent<ScreenFader> ().End_Game (true);
 		int size = players.Length;
@@ -290,6 +296,8 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Defeat() {
+		sounds [4].Play ();
+		sounds [3].Play ();
 		GameObject fade = GameObject.FindGameObjectWithTag (Tags.fade);
 		fade.GetComponent<ScreenFader> ().End_Game (false);
 		int size = players.Length;

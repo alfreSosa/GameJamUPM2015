@@ -7,7 +7,6 @@ public class itemBeer : MonoBehaviour {
 
 	private Vector3 vec0;
 	private Vector3 vec1;
-
 	// Use this for initialization
 	void Start () {
 		vec0 = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));

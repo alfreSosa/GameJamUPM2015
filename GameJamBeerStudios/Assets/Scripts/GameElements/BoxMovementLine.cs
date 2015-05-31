@@ -21,10 +21,13 @@ public class BoxMovementLine : MonoBehaviour {
 		if (m_currentDistance > distance) {
 			m_currentDistance = distance;
 			m_direction *= -1;
+			transform.eulerAngles = new Vector3(0, 180, 0);
 		} else if (m_currentDistance < 0) {
 			m_currentDistance = 0;
 			m_direction *= -1;
+			transform.eulerAngles = new Vector3(0, 0, 0);
+			
 		}
-		transform.position = m_initialPosition + transform.right * m_currentDistance;
+		transform.position += transform.right * speed * Time.deltaTime;
 	}
 }

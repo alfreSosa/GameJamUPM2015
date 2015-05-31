@@ -14,9 +14,11 @@ public class BallMovement : MonoBehaviour {
 	private bool m_fire = false;
 	public float fireTime = 5.0f;
 	private float m_currentFireTime = 0.0f;
+	private AudioSource[] sounds;
 
 	void Start () {
 		rb2D = GetComponent<Rigidbody2D> ();
+		sounds = GetComponents<AudioSource>();
 	}
 
 	void Update() {
@@ -55,6 +57,7 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	public void SetFire( bool enable) {
+		sounds [1].Play ();
 		m_fire = enable;
 		if (enable)
 			m_currentFireTime = fireTime;
@@ -65,6 +68,7 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
+		sounds [0].Play ();
 		if (other.gameObject.tag != Tags.item) {
 			Vector3 vel = rb2D.velocity;
 			rb2D.velocity = new Vector3(0,0,0);
@@ -88,6 +92,7 @@ public class BallMovement : MonoBehaviour {
 	}
 
 	public void SetSpeed(float speed) {
+		sounds [1].Play ();
 		speedMovement = speed;
 	}
 	

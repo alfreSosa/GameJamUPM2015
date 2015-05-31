@@ -26,8 +26,10 @@ public class MovementCube : MonoBehaviour {
 	private bool isDrunk = false;
 
 	private bool m_lock = false;
-
+	private AudioSource[] sounds;
+	
 	void Start () {
+		sounds = GetComponents<AudioSource>();
 		angle = transform.rotation.eulerAngles.z;
 	}
 
@@ -77,6 +79,7 @@ public class MovementCube : MonoBehaviour {
 	}
 
 	public void GetDrunk() {
+		sounds [0].Play ();
 		drunkDir = -1;
 		drunkElapsed = 0.0f;
 		isDrunk = true;
